@@ -1,21 +1,21 @@
-const express = require('express')
-const mongoose = require('mongoose')
 require('dotenv').config()
+const port = process.env.PORT || 5000
+const express = require('express')
 const app = express()
-const port = 3000
+const route = require('./routes/index.route')
+const db = require('./config/db/index')
+const { use } = require('./routes/auth.route')
+//
+app.use(express.json())
 
-async function connectDb() {
-  try {
-    await mongoose.connect(process.env.DB_URL)
-    console.log('connect success')
-  } catch (error) {
-    console.log('connect fail')
-  }
-}
+// connect db
+db.connect()
 
-connectDb()
+// routes init
+route(app)
 
-app.get('/', (req, res) => res.send('Hello world'))
 app.listen(port, () => {
   console.log(`App listening on port http://localhost:${port}`)
 })
+
+// client => GET => Middleware  =>SERVER
