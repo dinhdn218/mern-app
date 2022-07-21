@@ -4,8 +4,7 @@ const express = require('express')
 const app = express()
 const route = require('./routes/index.route')
 const db = require('./config/db/index')
-const { use } = require('./routes/auth.route')
-//
+
 app.use(express.json())
 
 // connect db

@@ -1,12 +1,13 @@
+### Đăng ký tài khoản
 POST http://localhost:5000/api/auth/register
 Content-Type: application/json
 
 {
-    "username": "dinhdn",
+    "username": "dinhdn123",
     "password": "123"
 }
 
-###
+### Đăng nhập
 POST http://localhost:5000/api/auth/login
 Content-Type: application/json
 
@@ -14,3 +15,18 @@ Content-Type: application/json
     "username": "dinhdn",
     "password": "123"
 }
+
+### Tạo mới công việc
+POST http://localhost:5000/api/posts
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmQ4Y2RiZjEzN2RhMmVkNzI2Y2M4YWYiLCJpYXQiOjE2NTgzOTI4MjN9.t-HvJrzjO-GdzBQk2CWV4guKnijzhJYk6LQIKJoBOzY
+
+{
+    "title": "Chat App đơn giản",
+    "description": "Tạo Chat App đơn giản với TS, NEXTJS, FIREBASE,...",
+    "url": "https://www.youtube.com/watch?v=nOnDom-BQbo"
+}
+
+### Lấy toàn bộ công việc của user đang đăng nhập
+GET http://localhost:5000/api/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmQ4Y2RiZjEzN2RhMmVkNzI2Y2M4YWYiLCJpYXQiOjE2NTgzOTM1ODZ9.qmD2f2df_cXTHSgzqmyqm6jO32yKAVwZN_wBfyoGu44
