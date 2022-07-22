@@ -7,4 +7,8 @@ router.post('/', verifyToken, postController.create)
 
 router.get('/', verifyToken, postController.read)
 
+router.put('/:id', verifyToken, postController.update)
+
+router.delete('/:id', verifyToken, postController.delete)
+
 module.exports = router

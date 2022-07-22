@@ -22,7 +22,7 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmQ4Y2RiZjEzN2RhMmVkNzI2Y2M4YWYiLCJpYXQiOjE2NTgzOTI4MjN9.t-HvJrzjO-GdzBQk2CWV4guKnijzhJYk6LQIKJoBOzY
 
 {
-    "title": "Chat App đơn giản",
+    "title": "Chat App đơn giản 1",
     "description": "Tạo Chat App đơn giản với TS, NEXTJS, FIREBASE,...",
     "url": "https://www.youtube.com/watch?v=nOnDom-BQbo"
 }
@@ -30,3 +30,18 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmQ4Y
 ### Lấy toàn bộ công việc của user đang đăng nhập
 GET http://localhost:5000/api/posts
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmQ4Y2RiZjEzN2RhMmVkNzI2Y2M4YWYiLCJpYXQiOjE2NTgzOTM1ODZ9.qmD2f2df_cXTHSgzqmyqm6jO32yKAVwZN_wBfyoGu44
+
+### Chỉnh sửa công việc
+PUT http://localhost:5000/api/posts/62d915b5ef70de40e15baa61
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmQ4Y2RiZjEzN2RhMmVkNzI2Y2M4YWYiLCJpYXQiOjE2NTg0NjMwMjF9.1A1CuLNvLJ-5pcpH6_dQl4AUWubeC19ICAEmGFIQOWU
+
+{
+    "title": "Tạo ChatApp đơn giản",
+    "description": "Tạo ChatApp đơn giản với TS, NEXTJS, FIREBASE,...!!",
+    "url": "https://google.com"
+}
+
+### Xoá công việc
+DELETE http://localhost:5000/api/posts/62da19e303f6505e08466be5
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmQ4Y2RiZjEzN2RhMmVkNzI2Y2M4YWYiLCJpYXQiOjE2NTg0NjMwMjF9.1A1CuLNvLJ-5pcpH6_dQl4AUWubeC19ICAEmGFIQOWU
