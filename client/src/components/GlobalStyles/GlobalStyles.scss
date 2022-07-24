@@ -1,0 +1,68 @@
+:root {
+  --primary-color: #fe2c55;
+  --check-color: #20d5ec;
+  --white-color: #ffffff;
+  --black-color: #161823;
+
+  --primary-font: "Roboto", sans-serif;
+  --secondary-font: "Montserrat", sans-serif;
+
+  --default-layout-height-header: 6rem;
+  --default-layout-width: 115rem;
+  --sidebar-width: 35.6rem;
+  --content-width: 69.2rem;
+}
+
+// Reset css
+html {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+input,
+textarea,
+select,
+button {
+  outline: none;
+  border: none;
+}
+input {
+  line-height: normal;
+}
+label,
+button {
+  cursor: pointer;
+  background-color: transparent;
+}
+a {
+  text-decoration: none;
+  color: var(--black-color);
+}
+img {
+  display: block;
+  max-width: 100%;
+}
+
+// Common css
+html {
+  font-size: 62.5%;
+  font-family: var(--primary-font);
+}
+
+body {
+  font-size: 1.6rem;
+  color: var(--black-color);
+}
+
+button,
+input {
+  font-family: var(--primary-font);
+  font-size: 1.6rem;
+}
