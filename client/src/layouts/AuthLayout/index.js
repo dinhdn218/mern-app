@@ -1,5 +1,5 @@
-import React from "react";
-import styles from "./AuthLayout.module.scss";
+import React from 'react';
+import styles from './AuthLayout.module.scss';
 
 const AuthLayout = ({ children }) => {
   return (

@@ -1,5 +1,5 @@
-import React from "react";
-import styles from "./MainLayout.module.scss";
+import React from 'react';
+import styles from './MainLayout.module.scss';
 
 const MainLayout = ({ children }) => {
   return (

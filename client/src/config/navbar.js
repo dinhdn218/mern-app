@@ -1,12 +1,12 @@
-import routes from "./routes";
+import routes from './routes';
 
 const navbar = [
   {
-    text: "Home",
+    text: 'Home',
     to: routes.home,
   },
   {
-    text: "About",
+    text: 'About',
     to: routes.about,
   },
 ];

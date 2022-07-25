@@ -1,15 +1,22 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { AuthLayout, MainLayout } from "./layouts";
-import { privateRoutes, publicRoutes } from "./routes";
+import { Fragment } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { AuthLayout, MainLayout } from './layouts';
+import { publicRoutes, privateRoutes } from './routes';
 
 function App() {
   return (
     <Router>
       <div className="App">
         <Routes>
+          {/* Load public route */}
           {publicRoutes.map((route, index) => {
-            const Page = route.page;
-            const Layout = AuthLayout;
+            const Page = route.component;
+            let Layout = AuthLayout;
+            if (route.layout) {
+              Layout = route.layout;
+            } else if (route.layout === null) {
+              Layout = Fragment;
+            }
 
             return (
               <Route
@@ -23,9 +30,16 @@ function App() {
               />
             );
           })}
+
+          {/* Load private route */}
           {privateRoutes.map((route, index) => {
-            const Page = route.page;
-            const Layout = MainLayout;
+            const Page = route.component;
+            let Layout = MainLayout;
+            if (route.layout) {
+              Layout = route.layout;
+            } else if (route.layout === null) {
+              Layout = Fragment;
+            }
 
             return (
               <Route

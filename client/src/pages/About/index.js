@@ -1,7 +1,17 @@
-import React from "react";
+import config from '@/config';
+import { Navigate } from 'react-router-dom';
 
 const About = () => {
-  return <div>About</div>;
+  const isAccess = false;
+  return (
+    <>
+      {isAccess ? (
+        <div>Home</div>
+      ) : (
+        <Navigate replace to={config.routes.login} />
+      )}
+    </>
+  );
 };
 
 export default About;

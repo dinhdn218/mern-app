@@ -1,27 +1,28 @@
-import config from "../config";
-import About from "../pages/About";
-import Home from "../pages/Home";
-import Auth from "../pages/Auth";
+import LoginForm from '@/components/LoginForm';
+import RegisterForm from '@/components/RegisterForm';
+import config from '@/config';
+import About from '@/pages/About';
+import Home from '@/pages/Home';
 
 const publicRoutes = [
   {
     path: config.routes.login,
-    page: Auth,
+    component: LoginForm,
   },
   {
     path: config.routes.register,
-    page: Auth,
+    component: RegisterForm,
   },
 ];
 
 const privateRoutes = [
   {
     path: config.routes.home,
-    page: Home,
+    component: Home,
   },
   {
     path: config.routes.about,
-    page: About,
+    component: About,
   },
 ];
 
