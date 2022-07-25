@@ -1,0 +1,40 @@
+.wrapper {
+  width: 90%;
+  :global(.mb-3) {
+    color: var(--white-color);
+  }
+  form {
+    width: 100%;
+  }
+
+  form > div {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .input {
+    padding: 0.6rem 1.2rem;
+    font-size: 1.6rem;
+    max-width: 55rem;
+    flex-shrink: 0;
+    color: var(--black-color);
+  }
+  .form-switch > * {
+    color: var(--white-color);
+    font-size: 1.6rem;
+  }
+
+  .button {
+    color: var(--white-color);
+    font-size: 1.6rem;
+    padding: 0.6rem 1.2rem;
+  }
+
+  .button:hover,
+  .button:active {
+    color: var(--white-color);
+  }
+}
