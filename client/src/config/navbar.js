@@ -9,6 +9,10 @@ const navbar = [
     text: 'About',
     to: routes.about,
   },
+  {
+    text: 'Dashboard',
+    to: routes.dashboard,
+  },
 ];
 
 export default navbar;
