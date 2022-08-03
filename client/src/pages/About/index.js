@@ -1,17 +1,5 @@
-import config from '@/config';
-import { Navigate } from 'react-router-dom';
-
 const About = () => {
-  const isAccess = false;
-  return (
-    <>
-      {isAccess ? (
-        <div>Home</div>
-      ) : (
-        <Navigate replace to={config.routes.login} />
-      )}
-    </>
-  );
+  return <div>About</div>;
 };
 
 export default About;

@@ -116,10 +116,13 @@ const authController = {
         { userId: user._id },
         process.env.ACCESS_TOKEN_SECRET
       );
+      // Create user response (exclude key password)
+      const userResponse = await User.findById(user._id).select("-password");
       return res.json({
         success: true,
         message: "User logged in successfully",
         accessToken,
+        user: userResponse,
       });
     } catch (error) {
       console.log(error);

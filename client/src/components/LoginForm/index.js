@@ -1,7 +1,9 @@
 import authApi from '@/api/authApi';
 import config from '@/config';
+import { AuthContext } from '@/store/contexts';
+import { setAuth } from '@/store/reducers/authActions';
 import classNames from 'classnames/bind';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Link, useNavigate } from 'react-router-dom';
@@ -10,6 +12,9 @@ import styles from './LoginForm.module.scss';
 const cx = classNames.bind(styles);
 
 const LoginForm = () => {
+  // global state
+  const [, dispatch] = useContext(AuthContext);
+
   // local state
   const [loginForm, setLoginForm] = useState({
     username: '',
@@ -32,7 +37,13 @@ const LoginForm = () => {
     try {
       const loginData = await authApi.login(loginForm);
       if (loginData.success) {
-        navigate(config.routes.dashboard);
+        dispatch(
+          setAuth({
+            isAuthenticated: true,
+            user: loginData.user,
+          }),
+        );
+        navigate(config.routes.home);
       } else {
         // Login fail
       }

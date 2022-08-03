@@ -1,5 +1,6 @@
 import { Fragment } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import ProtectedRoute from './components/ProtectedRoute';
 import { AuthLayout, MainLayout } from './layouts';
 import { publicRoutes, privateRoutes } from './routes';
 
@@ -46,9 +47,11 @@ function App() {
                 key={index}
                 path={route.path}
                 element={
-                  <Layout>
-                    <Page />
-                  </Layout>
+                  <ProtectedRoute>
+                    <Layout>
+                      <Page />
+                    </Layout>
+                  </ProtectedRoute>
                 }
               />
             );
