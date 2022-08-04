@@ -6,7 +6,8 @@ import classNames from 'classnames/bind';
 import { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import styles from './LoginForm.module.scss';
 
 const cx = classNames.bind(styles);
@@ -20,8 +21,6 @@ const LoginForm = () => {
     username: '',
     password: '',
   });
-
-  const navigate = useNavigate();
 
   const { username, password } = loginForm;
 
@@ -43,9 +42,9 @@ const LoginForm = () => {
             user: loginData.user,
           }),
         );
-        navigate(config.routes.home);
+        toast.success('Welcome!!!');
       } else {
-        // Login fail
+        toast.error(loginData.data.message);
       }
     } catch (error) {
       console.log('An unknown error:', error);
