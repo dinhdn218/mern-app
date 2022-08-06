@@ -21,6 +21,22 @@ class AuthApi {
     }
   };
 
+  register = async (registerForm) => {
+    try {
+      const response = await axiosClient.post('auth/register', registerForm);
+      return response;
+    } catch (error) {
+      if (error.response) {
+        return error.response;
+      } else {
+        return {
+          success: false,
+          message: error.message,
+        };
+      }
+    }
+  };
+
   check = async () => {
     try {
       const response = await axiosClient.get('/auth');
