@@ -1,5 +1,5 @@
-import LoginForm from '@/components/LoginForm';
-import RegisterForm from '@/components/RegisterForm';
+import LoginForm from '@/layouts/AuthLayout/components/LoginForm';
+import RegisterForm from '@/layouts/AuthLayout/components/RegisterForm';
 import config from '@/config';
 import About from '@/pages/About';
 import Home from '@/pages/Home';
