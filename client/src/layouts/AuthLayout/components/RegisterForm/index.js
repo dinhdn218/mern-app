@@ -39,7 +39,6 @@ const RegisterForm = () => {
     delete payload.confirmPassword;
     try {
       const registerData = await authApi.register(payload);
-      console.log(registerData);
       if (registerData.success) {
         toast.success(registerData.message);
         navigate(config.routes.login);
@@ -50,8 +49,6 @@ const RegisterForm = () => {
       console.log('An unknown error:', error);
     }
   };
-
-  // console.log(registerForm);
 
   return (
     <div className={cx('wrapper')}>

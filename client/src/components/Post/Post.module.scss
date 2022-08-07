@@ -1,0 +1,61 @@
+.wrapper {
+  width: calc(calc(100% / 3) - 2rem);
+  margin-bottom: 3rem;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 12px;
+  border-radius: 0.4rem;
+  .card {
+    border-width: 0.2rem;
+    padding: 0;
+    height: 100%;
+    & > h3 {
+      padding: 1rem;
+    }
+    :global(.card-body) {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      & > span {
+        margin-top: auto;
+      }
+    }
+  }
+  & > div {
+    padding: 1rem;
+  }
+  & > div > h1 {
+    font-size: 3.6rem;
+    padding: 2rem 0;
+  }
+  & > div > div {
+    font-size: 1.6rem;
+    & > * {
+      font-size: 1.4rem;
+    }
+    & > *:not(span) {
+      padding: 0.5rem 0;
+    }
+    & > h2 {
+      font-size: 2rem;
+    }
+  }
+  .wrapper-footer {
+    display: flex;
+    align-items: center;
+    & > * {
+      width: 3rem;
+      height: 3rem;
+      padding: 0 initial;
+      & > img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    & > a {
+      width: 3.5rem;
+      height: 3.5rem;
+    }
+    & > *:not(:last-child) {
+      margin-right: 1rem;
+    }
+  }
+}

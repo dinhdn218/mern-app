@@ -11,19 +11,19 @@ import styles from './Navbar.module.scss';
 import { useContext } from 'react';
 import { AuthContext } from '@/store/contexts';
 import { LOCAL_STORAGE_TOKEN_NAME } from '@/constants/common';
-import { setAuth } from '@/store/reducers/authActions';
+import { setAuth } from '@/store/reducers/auth/authActions';
 
 const cx = classNames.bind(styles);
 
 const Navbar = () => {
-  const [state, dispatch] = useContext(AuthContext);
+  const [authState, authDispatch] = useContext(AuthContext);
   const {
     user: { username },
-  } = state;
+  } = authState;
 
   const handleLogout = () => {
     localStorage.removeItem(LOCAL_STORAGE_TOKEN_NAME);
-    dispatch(setAuth({ isAuthenticated: false, user: null }));
+    authDispatch(setAuth({ isAuthenticated: false, user: null }));
   };
 
   return (

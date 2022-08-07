@@ -1,11 +1,14 @@
-import { Fragment } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Fragment, useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import ProtectedRoute from './components/ProtectedRoute';
 import Toast from './components/Toast';
 import { AuthLayout, MainLayout } from './layouts';
-import { publicRoutes, privateRoutes } from './routes';
+import { privateRoutes, publicRoutes } from './routes';
+import { PostProvider } from './store/contexts';
 
 function App() {
+  const [waiting, setWaiting] = useState(false);
+
   return (
     <Router>
       <Toast />
@@ -26,8 +29,8 @@ function App() {
                 key={index}
                 path={route.path}
                 element={
-                  <Layout>
-                    <Page />
+                  <Layout waiting={waiting}>
+                    <Page setWaiting={setWaiting} />
                   </Layout>
                 }
               />
@@ -49,11 +52,13 @@ function App() {
                 key={index}
                 path={route.path}
                 element={
-                  <ProtectedRoute>
-                    <Layout>
-                      <Page />
-                    </Layout>
-                  </ProtectedRoute>
+                  <PostProvider>
+                    <ProtectedRoute>
+                      <Layout>
+                        <Page />
+                      </Layout>
+                    </ProtectedRoute>
+                  </PostProvider>
                 }
               />
             );

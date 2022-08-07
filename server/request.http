@@ -19,12 +19,12 @@ Content-Type: application/json
 ### Tạo mới công việc
 POST http://localhost:5000/api/posts
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmQ4Y2RiZjEzN2RhMmVkNzI2Y2M4YWYiLCJpYXQiOjE2NTgzOTI4MjN9.t-HvJrzjO-GdzBQk2CWV4guKnijzhJYk6LQIKJoBOzY
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmQ4Y2RiZjEzN2RhMmVkNzI2Y2M4YWYiLCJpYXQiOjE2NTk4OTA3MzV9.GhMQCJ8_maCatAyPmZlgBWoFvUOF4hbT4D4MJSPAJjo
 
 {
-    "title": "Chat App đơn giản 1",
-    "description": "Tạo Chat App đơn giản với TS, NEXTJS, FIREBASE,...",
-    "url": "https://www.youtube.com/watch?v=nOnDom-BQbo"
+    "title": "Học REDUX (+Toolkit)",
+    "description": "Tìm hiểu từ khái niệm tới lý do, kiến trúc của REDUX và những ưu/nhược khi sử dụng Redux trong một dự án React. Chúng ta sẽ xây dựng một ứng dụng demo bằng REDUX và REDUX Toolkit để có thể thấy rõ được những cải tiến mà REDUX Toolkit mang lại",
+    "url": "https://www.youtube.com/watch?v=g_K1w8e0lLo"
 }
 
 ### Lấy toàn bộ công việc của user đang đăng nhập

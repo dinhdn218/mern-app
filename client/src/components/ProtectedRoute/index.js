@@ -9,8 +9,8 @@ import styles from './ProtectedRoute.module.scss';
 const cx = classNames.bind(styles);
 
 const ProtectedRoute = ({ children }) => {
-  const [state] = useContext(AuthContext);
-  const { authLoading, isAuthenticated } = state;
+  const [authState] = useContext(AuthContext);
+  const { authLoading, isAuthenticated } = authState;
 
   return authLoading ? (
     <div className={cx('wrapper-spinner')}>

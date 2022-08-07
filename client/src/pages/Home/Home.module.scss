@@ -1,0 +1,19 @@
+.wrapper {
+  padding: 4rem 2rem;
+  & > div > h1 {
+    font-size: 3.6rem;
+    padding: 2rem 0;
+  }
+  & > div > div {
+    font-size: 1.6rem;
+    & > * {
+      font-size: 1.6rem;
+    }
+    & > *:not(button) {
+      padding: 0.5rem 0;
+    }
+    & > h2 {
+      font-size: 2rem;
+    }
+  }
+}

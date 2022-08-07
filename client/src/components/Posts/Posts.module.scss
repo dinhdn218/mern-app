@@ -1,0 +1,35 @@
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.create-icon {
+  width: 6rem;
+  height: 6rem;
+  position: fixed;
+  right: 4rem;
+  bottom: 4rem;
+  cursor: pointer;
+  z-index: 10;
+  display: block;
+}
+
+html {
+  body {
+    :global(#button-tooltip) {
+      right: 1rem !important;
+      font-size: 1.6rem;
+    }
+    :global(.tooltip-arrow) {
+      top: 50% !important;
+      transform: translateY(-50%) !important;
+    }
+    :global(.tooltip-arrow::before) {
+      border-left-color: var(--bs-primary) !important;
+    }
+    :global(.tooltip-inner) {
+      background-color: var(--bs-primary) !important;
+    }
+  }
+}

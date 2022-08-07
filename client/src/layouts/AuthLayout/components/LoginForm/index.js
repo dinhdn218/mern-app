@@ -1,7 +1,7 @@
 import authApi from '@/api/authApi';
 import config from '@/config';
 import { AuthContext } from '@/store/contexts';
-import { setAuth } from '@/store/reducers/authActions';
+import { setAuth } from '@/store/reducers/auth/authActions';
 import classNames from 'classnames/bind';
 import { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
@@ -12,9 +12,9 @@ import styles from './LoginForm.module.scss';
 
 const cx = classNames.bind(styles);
 
-const LoginForm = () => {
+const LoginForm = ({ setWaiting }) => {
   // global state
-  const [, dispatch] = useContext(AuthContext);
+  const [, authDispatch] = useContext(AuthContext);
 
   // local state
   const [loginForm, setLoginForm] = useState({
@@ -33,10 +33,12 @@ const LoginForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setWaiting(true);
     try {
       const loginData = await authApi.login(loginForm);
+      setWaiting(false);
       if (loginData.success) {
-        dispatch(
+        authDispatch(
           setAuth({
             isAuthenticated: true,
             user: loginData.user,

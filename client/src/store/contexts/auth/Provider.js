@@ -1,14 +1,14 @@
 import authApi from '@/api/authApi';
 import { LOCAL_STORAGE_TOKEN_NAME } from '@/constants/common';
-import { setAuth } from '@/store/reducers/authActions';
-import authReducer, { initState } from '@/store/reducers/authReducer';
+import { setAuth } from '@/store/reducers/auth/authActions';
+import authReducer, { initStateAuth } from '@/store/reducers/auth/authReducer';
 import { useEffect, useReducer } from 'react';
 import Context from './Context';
 
 const Provider = ({ children }) => {
-  const [state, dispatch] = useReducer(authReducer, initState);
+  const [state, dispatch] = useReducer(authReducer, initStateAuth);
 
-  const dataCommon = [state, dispatch];
+  const data = [state, dispatch];
 
   const loadingUser = async () => {
     try {
@@ -44,7 +44,7 @@ const Provider = ({ children }) => {
     loadingUser();
   }, []);
 
-  return <Context.Provider value={dataCommon}>{children}</Context.Provider>;
+  return <Context.Provider value={data}>{children}</Context.Provider>;
 };
 
 export default Provider;

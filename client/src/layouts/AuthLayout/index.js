@@ -1,17 +1,18 @@
+import Waiting from '@/components/Waiting';
+import config from '@/config';
 import { AuthContext } from '@/store/contexts';
 import classNames from 'classnames/bind';
 import { useContext } from 'react';
-import styles from './AuthLayout.module.scss';
 import Spinner from 'react-bootstrap/Spinner';
 import { Navigate } from 'react-router-dom';
-import config from '@/config';
+import styles from './AuthLayout.module.scss';
 
 const cx = classNames.bind(styles);
 
-const AuthLayout = ({ children }) => {
+const AuthLayout = ({ children, waiting }) => {
   // global state
-  const [state] = useContext(AuthContext);
-  const { authLoading, isAuthenticated } = state;
+  const [authState] = useContext(AuthContext);
+  const { authLoading, isAuthenticated } = authState;
 
   return authLoading ? (
     <div className={cx('wrapper-spinner')}>
@@ -28,6 +29,7 @@ const AuthLayout = ({ children }) => {
           {children}
         </div>
       </div>
+      <Waiting waiting={waiting} />
     </div>
   );
 };
