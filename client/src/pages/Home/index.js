@@ -1,4 +1,5 @@
 import postApi from '@/api/postApi';
+import Posts from '@/components/Posts';
 import Waiting from '@/components/Waiting';
 import { AuthContext, PostContext } from '@/store/contexts';
 import { getAll } from '@/store/reducers/post/postActions';
@@ -6,26 +7,22 @@ import classNames from 'classnames/bind';
 import { useContext, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import styles from './Home.module.scss';
 import { toast } from 'react-toastify';
-import Posts from '@/components/Posts';
+import styles from './Home.module.scss';
 
 const cx = classNames.bind(styles);
 
 const Home = () => {
   const [postState, postDispatch] = useContext(PostContext);
-  const [authState] = useContext(AuthContext);
   const { postLoading, posts } = postState;
+  const [authState] = useContext(AuthContext);
   const {
     user: { username },
   } = authState;
 
-  console.log(postState);
-
   const getPosts = async () => {
     try {
       const response = await postApi.getAll();
-      console.log(response);
       if (response.success) {
         postDispatch(getAll({ posts: response.posts }));
       } else if (!response.data.success) {
@@ -51,7 +48,7 @@ const Home = () => {
   if (postLoading) {
     body = <Waiting waiting={true} />;
   } else if (posts.length > 0) {
-    body = <Posts posts={posts} />;
+    body = <Posts />;
   } else
     body = (
       <Card className="text-center">

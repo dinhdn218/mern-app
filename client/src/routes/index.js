@@ -3,6 +3,7 @@ import RegisterForm from '@/layouts/AuthLayout/components/RegisterForm';
 import config from '@/config';
 import About from '@/pages/About';
 import Home from '@/pages/Home';
+import { PostProvider } from '@/store/contexts';
 
 const publicRoutes = [
   {
@@ -19,6 +20,7 @@ const privateRoutes = [
   {
     path: config.routes.home,
     component: Home,
+    provider: PostProvider,
   },
   {
     path: config.routes.about,

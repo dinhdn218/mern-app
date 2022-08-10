@@ -4,7 +4,6 @@ import ProtectedRoute from './components/ProtectedRoute';
 import Toast from './components/Toast';
 import { AuthLayout, MainLayout } from './layouts';
 import { privateRoutes, publicRoutes } from './routes';
-import { PostProvider } from './store/contexts';
 
 function App() {
   const [waiting, setWaiting] = useState(false);
@@ -40,6 +39,9 @@ function App() {
           {/* Load private route */}
           {privateRoutes.map((route, index) => {
             const Page = route.component;
+            const Provider = route.provider;
+            let element;
+
             let Layout = MainLayout;
             if (route.layout) {
               Layout = route.layout;
@@ -47,21 +49,26 @@ function App() {
               Layout = Fragment;
             }
 
-            return (
-              <Route
-                key={index}
-                path={route.path}
-                element={
-                  <PostProvider>
-                    <ProtectedRoute>
-                      <Layout>
-                        <Page />
-                      </Layout>
-                    </ProtectedRoute>
-                  </PostProvider>
-                }
-              />
-            );
+            if (Provider) {
+              element = (
+                <Provider>
+                  <ProtectedRoute>
+                    <Layout>
+                      <Page />
+                    </Layout>
+                  </ProtectedRoute>
+                </Provider>
+              );
+            } else {
+              element = (
+                <ProtectedRoute>
+                  <Layout>
+                    <Page />
+                  </Layout>
+                </ProtectedRoute>
+              );
+            }
+            return <Route key={index} path={route.path} element={element} />;
           })}
         </Routes>
       </div>

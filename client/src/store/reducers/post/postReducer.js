@@ -1,4 +1,4 @@
-import { GET_POSTS } from '@/constants/common';
+import { GET_POSTS, NEED_LOADING } from '@/constants/common';
 
 const initState = {
   postLoading: true,
@@ -13,6 +13,8 @@ const postReducer = (state, action) => {
   switch (type) {
     case GET_POSTS:
       return { ...state, postLoading: false, posts };
+    case NEED_LOADING:
+      return { ...state, postLoading: true };
 
     default:
       return state;

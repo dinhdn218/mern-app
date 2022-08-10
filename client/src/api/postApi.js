@@ -16,6 +16,22 @@ class PostApi {
       }
     }
   };
+
+  create = async (post) => {
+    try {
+      const response = await axiosClient.post('/posts', post);
+      return response;
+    } catch (error) {
+      if (error.response) {
+        return error.response;
+      } else {
+        return {
+          success: false,
+          message: error.message,
+        };
+      }
+    }
+  };
 }
 
 const postApi = new PostApi();
