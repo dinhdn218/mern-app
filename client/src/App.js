@@ -11,6 +11,7 @@ function App() {
   return (
     <Router>
       <Toast />
+
       <div className="App">
         <Routes>
           {/* Load public route */}
@@ -51,13 +52,13 @@ function App() {
 
             if (Provider) {
               element = (
-                <Provider>
-                  <ProtectedRoute>
-                    <Layout>
+                <ProtectedRoute>
+                  <Layout>
+                    <Provider>
                       <Page />
-                    </Layout>
-                  </ProtectedRoute>
-                </Provider>
+                    </Provider>
+                  </Layout>
+                </ProtectedRoute>
               );
             } else {
               element = (

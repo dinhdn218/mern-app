@@ -32,6 +32,38 @@ class PostApi {
       }
     }
   };
+
+  update = async (id, newPost) => {
+    try {
+      const response = await axiosClient.put(`/posts/${id}`, newPost);
+      return response;
+    } catch (error) {
+      if (error.response) {
+        return error.response;
+      } else {
+        return {
+          success: false,
+          message: error.message,
+        };
+      }
+    }
+  };
+
+  delete = async (id) => {
+    try {
+      const response = await axiosClient.delete(`/posts/${id}`);
+      return response;
+    } catch (error) {
+      if (error.response) {
+        return error.response;
+      } else {
+        return {
+          success: false,
+          message: error.message,
+        };
+      }
+    }
+  };
 }
 
 const postApi = new PostApi();

@@ -11,8 +11,8 @@ import { POST_STATUS } from '@/constants/common';
 
 const cx = classNames.bind(styles);
 
-const Post = ({ post }) => {
-  const { title, description, status, url } = post;
+const Post = ({ post, onShowModalUpdate, onShowModalDelete }) => {
+  const { _id, title, description, status, url } = post;
 
   const color =
     status === POST_STATUS.TO_LEARN
@@ -26,7 +26,7 @@ const Post = ({ post }) => {
       <Card border={color} className={cx('card')}>
         <Card.Header as="h3">{title}</Card.Header>
         <Card.Body>
-          <Card.Text>{description}.</Card.Text>
+          <Card.Text>{description}</Card.Text>
           <Badge bg={color}>{status}</Badge>
         </Card.Body>
         <Card.Footer
@@ -37,10 +37,18 @@ const Post = ({ post }) => {
           <Nav.Link target="_blank" href={url}>
             <img src={playIcon} alt="Play icon" />
           </Nav.Link>
-          <Button active variant="outline-light">
+          <Button
+            onClick={onShowModalUpdate(post)}
+            active
+            variant="outline-light"
+          >
             <img src={updateIcon} alt="Update icon" />
           </Button>
-          <Button active variant="outline-light">
+          <Button
+            onClick={onShowModalDelete(_id)}
+            active
+            variant="outline-light"
+          >
             <img src={removeIcon} alt="Remove icon" />
           </Button>
         </Card.Footer>

@@ -1,10 +1,11 @@
 import postApi from '@/api/postApi';
 import Posts from '@/components/Posts';
+import ModalAddPost from '@/components/Posts/ModalAddPost';
 import Waiting from '@/components/Waiting';
 import { AuthContext, PostContext } from '@/store/contexts';
-import { getAll } from '@/store/reducers/post/postActions';
+import { create, getAll, needLoading } from '@/store/reducers/post/postActions';
 import classNames from 'classnames/bind';
-import { useContext, useEffect } from 'react';
+import { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { toast } from 'react-toastify';
@@ -20,35 +21,56 @@ const Home = () => {
     user: { username },
   } = authState;
 
-  const getPosts = async () => {
+  const [showModalAdd, setShowModalAdd] = useState(false);
+  const [post, setPost] = useState({
+    title: '',
+    description: '',
+    url: '',
+  });
+
+  const handleCloseModalAdd = () => {
+    setPost({
+      title: '',
+      description: '',
+      url: '',
+    });
+    setShowModalAdd(false);
+  };
+
+  const handleShowModalAdd = () => setShowModalAdd(true);
+
+  const handleSubmitModalAdd = async (event) => {
+    event.preventDefault();
+    postDispatch(needLoading());
+    setShowModalAdd(false);
     try {
-      const response = await postApi.getAll();
-      if (response.success) {
-        postDispatch(getAll({ posts: response.posts }));
-      } else if (!response.data.success) {
-        postDispatch(getAll({ posts: [] }));
-        toast.error(response.data.message);
+      const res = await postApi.create(post);
+      if (res.success) {
+        toast.success(res.message);
+        postDispatch(create(res.post));
+        setPost({
+          title: '',
+          description: '',
+          url: '',
+        });
+      } else if (!res.data.success) {
+        postDispatch(getAll(posts));
+        toast.error(res.data.message);
       }
     } catch (error) {
-      postDispatch(
-        getAll({
-          posts: [],
-        }),
-      );
-      toast.error(error.message);
+      console.log('An unknown error:', error);
     }
   };
 
-  useEffect(() => {
-    getPosts();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const handleChangePost = (e) => {
+    setPost((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
 
   let body;
   if (postLoading) {
     body = <Waiting waiting={true} />;
   } else if (posts.length > 0) {
-    body = <Posts />;
+    body = <Posts handleShowModalAdd={handleShowModalAdd} />;
   } else
     body = (
       <Card className="text-center">
@@ -58,11 +80,24 @@ const Home = () => {
           <Card.Text>
             Click the button below to track your first skill to learn.
           </Card.Text>
-          <Button variant="info">LearnIt!</Button>
+          <Button onClick={handleShowModalAdd} variant="info">
+            LearnIt!
+          </Button>
         </Card.Body>
       </Card>
     );
-  return <div className={cx('wrapper')}>{body}</div>;
+  return (
+    <div className={cx('wrapper')}>
+      {body}
+      <ModalAddPost
+        showModalAdd={showModalAdd}
+        post={post}
+        onCloseModalAdd={handleCloseModalAdd}
+        onSubmit={handleSubmitModalAdd}
+        onChangePost={handleChangePost}
+      />
+    </div>
+  );
 };
 
 export default Home;

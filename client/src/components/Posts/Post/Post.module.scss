@@ -1,5 +1,6 @@
 .wrapper {
   width: calc(calc(100% / 3) - 2rem);
+  margin: 0 1rem;
   margin-bottom: 3rem;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 12px;
   border-radius: 0.4rem;
@@ -41,9 +42,9 @@
   .wrapper-footer {
     display: flex;
     align-items: center;
-    & > * {
-      width: 3rem;
-      height: 3rem;
+    & > button {
+      width: 2.5rem;
+      height: 2.5rem;
       padding: 0 initial;
       & > img {
         width: 100%;
@@ -51,11 +52,21 @@
       }
     }
     & > a {
-      width: 3.5rem;
-      height: 3.5rem;
+      width: 3.2rem;
+      height: 4rem;
+      & > img {
+        width: 100%;
+        height: 100%;
+      }
     }
     & > *:not(:last-child) {
       margin-right: 1rem;
     }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .wrapper {
+    width: 100%;
   }
 }
